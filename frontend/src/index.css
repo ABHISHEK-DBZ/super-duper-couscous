@@ -1,0 +1,458 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root, [data-theme="dark"] {
+  /* Engineering Workbench Dark Palette */
+  --bg-app: #090B0E;
+  --bg-surface: #101419;
+  --bg-sidebar: #0C0F13;
+  --bg-subtle: #161B22;
+  --bg-hover: #1C222B;
+  
+  --text-primary: #F3F2ED;
+  --text-secondary: #92969D;
+  --text-muted: #5C626C;
+  --text-inverse: #090B0E;
+
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --border-dark: rgba(255, 255, 255, 0.16);
+
+  /* Muted Sage Accent */
+  --accent-sage: #51D6A0;
+  --accent-sage-dark: #3DB884;
+  --accent-sage-light: rgba(81, 214, 160, 0.12);
+  --accent-sage-border: rgba(81, 214, 160, 0.3);
+
+  /* Restrained Engineering Status Colors (Dark Functional) */
+  --status-pass-text: #51D6A0;
+  --status-pass-bg: rgba(81, 214, 160, 0.12);
+  --status-pass-border: rgba(81, 214, 160, 0.3);
+
+  --status-fail-text: #FF624E;
+  --status-fail-bg: rgba(255, 98, 78, 0.12);
+  --status-fail-border: rgba(255, 98, 78, 0.3);
+
+  --status-warn-text: #FFB84D;
+  --status-warn-bg: rgba(255, 184, 77, 0.12);
+  --status-warn-border: rgba(255, 184, 77, 0.3);
+
+  --status-inconclusive-text: #FB923C;
+  --status-inconclusive-bg: rgba(251, 146, 60, 0.12);
+  --status-inconclusive-border: rgba(251, 146, 60, 0.3);
+
+  --status-neutral-text: #9CA3AF;
+  --status-neutral-bg: rgba(255, 255, 255, 0.05);
+  --status-neutral-border: rgba(255, 255, 255, 0.1);
+
+  /* Dark Charcoal Surfaces Reserved for Code, Diffs & Terminal Logs */
+  --code-bg: #090B0E;
+  --code-surface: #12151B;
+  --code-border: #1F242C;
+  --code-text: #E5E7EB;
+  --code-muted: #8E939D;
+  --code-green: #34D399;
+  --code-red: #F87171;
+  --code-amber: #FBBF24;
+
+  /* Typography */
+  --font-display: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-interface: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+[data-theme="light"] {
+  /* Engineering Workbench Light Neutral Palette */
+  --bg-app: #FAFAF8;
+  --bg-surface: #FFFFFF;
+  --bg-sidebar: #F5F6F2;
+  --bg-subtle: #F0F2ED;
+  --bg-hover: #ECEEE7;
+  
+  --text-primary: #171815;
+  --text-secondary: #696B66;
+  --text-muted: #8E9089;
+  --text-inverse: #FFFFFF;
+
+  --border-color: #E5E7E1;
+  --border-subtle: #EDF0EA;
+  --border-dark: #D4D7CD;
+
+  --accent-sage: #95ABA7;
+  --accent-sage-dark: #7A938F;
+  --accent-sage-light: #EBF0EF;
+  --accent-sage-border: #C8D6D4;
+
+  --status-pass-text: #166534;
+  --status-pass-bg: #F0FDF4;
+  --status-pass-border: #BBF7D0;
+
+  --status-fail-text: #991B1B;
+  --status-fail-bg: #FEF2F2;
+  --status-fail-border: #FECACA;
+
+  --status-warn-text: #854D0E;
+  --status-warn-bg: #FEFCE8;
+  --status-warn-border: #FEF08A;
+
+  --status-inconclusive-text: #9A3412;
+  --status-inconclusive-bg: #FFF7ED;
+  --status-inconclusive-border: #FFEDD5;
+
+  --status-neutral-text: #4B5563;
+  --status-neutral-bg: #F3F4F6;
+  --status-neutral-border: #E5E7EB;
+
+  --code-bg: #141618;
+  --code-surface: #1B1E21;
+  --code-border: #2B2E33;
+  --code-text: #E5E7EB;
+  --code-muted: #8E939D;
+  --code-green: #34D399;
+  --code-red: #F87171;
+  --code-amber: #FBBF24;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-app);
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Typography Helpers */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-interface {
+  font-family: var(--font-interface);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Workbench Panel */
+.workbench-panel {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.workbench-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 20px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-app);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-dark);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+  outline: none;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Engineering Buttons */
+.btn-primary {
+  background: var(--text-primary);
+  color: var(--text-inverse);
+  font-weight: 500;
+  border: 1px solid var(--text-primary);
+}
+.btn-primary:hover {
+  background: var(--bg-hover);
+  border-color: var(--bg-hover);
+}
+
+.btn-secondary {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+.btn-secondary:hover {
+  background: var(--bg-sidebar);
+  border-color: var(--border-dark);
+}
+
+.btn-sage {
+  background: var(--accent-sage);
+  color: #FFFFFF;
+  border: 1px solid var(--accent-sage-dark);
+}
+.btn-sage:hover {
+  background: var(--accent-sage-dark);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid transparent;
+}
+.btn-ghost:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.btn-success {
+  background: var(--status-pass-text);
+  color: #FFFFFF;
+  border: 1px solid var(--status-pass-text);
+}
+.btn-success:hover {
+  background: #15803D;
+}
+
+.btn-danger {
+  background: var(--bg-surface);
+  color: var(--status-fail-text);
+  border: 1px solid var(--status-fail-border);
+}
+.btn-danger:hover {
+  background: var(--status-fail-bg);
+  border-color: #F87171;
+}
+
+/* Inputs & Form Controls */
+.input-field {
+  width: 100%;
+  padding: 8px 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.input-field:focus {
+  border-color: var(--accent-sage-dark);
+  box-shadow: 0 0 0 1px var(--accent-sage);
+}
+
+/* Workbench Table Density & Header */
+.workbench-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  text-align: left;
+}
+
+.workbench-table th {
+  padding: 10px 14px;
+  background: var(--bg-sidebar);
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.workbench-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+  vertical-align: middle;
+}
+
+.workbench-table tr:hover td {
+  background-color: var(--bg-hover);
+}
+
+/* Status Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.badge-low {
+  background: #F0FDF4;
+  color: #166534;
+  border: 1px solid #BBF7D0;
+}
+
+.badge-medium {
+  background: #FEFCE8;
+  color: #854D0E;
+  border: 1px solid #FEF08A;
+}
+
+.badge-high {
+  background: #FFF7ED;
+  color: #C2410C;
+  border: 1px solid #FFEDD5;
+}
+
+.badge-critical {
+  background: #FEF2F2;
+  color: #991B1B;
+  border: 1px solid #FECACA;
+}
+
+.badge-pass {
+  background: var(--status-pass-bg);
+  color: var(--status-pass-text);
+  border: 1px solid var(--status-pass-border);
+}
+
+.badge-fail {
+  background: var(--status-fail-bg);
+  color: var(--status-fail-text);
+  border: 1px solid var(--status-fail-border);
+}
+
+.badge-inconclusive {
+  background: var(--status-inconclusive-bg);
+  color: var(--status-inconclusive-text);
+  border: 1px solid var(--status-inconclusive-border);
+}
+
+.badge-not-run {
+  background: var(--status-neutral-bg);
+  color: var(--status-neutral-text);
+  border: 1px solid var(--status-neutral-border);
+}
+
+.badge-rejected {
+  background: #FEE2E2;
+  color: #991B1B;
+  border: 1px solid #FCA5A5;
+}
+
+.badge-observed {
+  background: #F1F5F9;
+  color: #334155;
+  border: 1px solid #CBD5E1;
+}
+
+.badge-executed {
+  background: #ECFDF5;
+  color: #047857;
+  border: 1px solid #A7F3D0;
+}
+
+.badge-ai {
+  background: #F5F3FF;
+  color: #6D28D9;
+  border: 1px solid #DDD6FE;
+}
+
+/* Glass panel fallback */
+.glass-panel {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+/* Terminal & Code Block styling */
+.terminal-block {
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 6px;
+  color: var(--code-text);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  overflow-x: auto;
+}
+.pulse-glow {
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+@keyframes beamSweep {
+  0% { transform: translateX(-100%); opacity: 0; }
+  50% { opacity: 0.8; }
+  100% { transform: translateX(200%); opacity: 0; }
+}
+.beam-sweep {
+  animation: beamSweep 3.5s infinite ease-in-out;
+}
+
+@keyframes dashFlow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+.animate-dash-flow {
+  stroke-dasharray: 6 4;
+  animation: dashFlow 1.2s linear infinite;
+}
+
+/* Grid Background */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, var(--border-subtle) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-subtle) 1px, transparent 1px);
+}
+
+/* Prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-dash-flow,
+  .beam-sweep,
+  .pulse-glow {
+    animation: none !important;
+  }
+}
